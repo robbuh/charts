@@ -6,7 +6,8 @@ metadata:
     kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
   name: {{ template "plone.fullname" . }}
-  labels: {{- include "plone.labels" . | nindent 4 }}
+  labels:
+    io.kompose.service: plone
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
