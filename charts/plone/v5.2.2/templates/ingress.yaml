@@ -3,8 +3,7 @@ apiVersion: {{ template "plone.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: {{ template "plone.fullname" . }}
-  labels:
-    io.kompose.service: plone
+  labels: {{- include "plone.labels" . | nindent 4 }}
   annotations:
     {{- if .Values.ingress.certManager }}
     kubernetes.io/tls-acme: "true"

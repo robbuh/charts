@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: {{ template "plone.deployment.apiVersion" . }}
 kind: Deployment
 metadata:
   annotations:
@@ -6,24 +6,53 @@ metadata:
     kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
   name: {{ template "plone.fullname" . }}
-  labels:
-    io.kompose.service: plone
+  labels: {{- include "plone.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels:
-      io.kompose.service: plone
-  strategy: {}
+    matchLabels: {{- include "plone.matchLabels" . | nindent 6 }}
+  {{- if .Values.updateStrategy }}
+  strategy: {{ toYaml .Values.updateStrategy | nindent 4 }}
+  {{- end }}
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
+      labels: {{- include "plone.labels" . | nindent 8 }}
+      {{- if or .Values.podAnnotations .Values.metrics.enabled }}
       annotations:
-        kompose.cmd: kompose convert -c
-        kompose.version: 1.22.0 (HEAD)
-      creationTimestamp: null
-      labels:
-        io.kompose.service: plone
+        {{- if .Values.podAnnotations }}
+        {{- include "plone.tplValue" (dict "value" .Values.podAnnotations "context" $) | nindent 8 }}
+        {{- end }}
+        {{- if .Values.metrics.podAnnotations }}
+        {{- include "plone.tplValue" (dict "value" .Values.metrics.podAnnotations "context" $) | nindent 8 }}
+        {{- end }}
+      {{- end }}
     spec:
+{{- include "plone.imagePullSecrets" . | indent 6 }}
+      {{- if .Values.schedulerName }}
+      schedulerName: {{ .Values.schedulerName | quote }}
+      {{- end }}
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - "status.localhost"
+      {{- if .Values.affinity }}
+      affinity: {{- include "plone.tplValue" (dict "value" .Values.affinity "context" $) | nindent 8 }}
+      {{- end }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector: {{- include "plone.tplValue" (dict "value" .Values.nodeSelector "context" $) | nindent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations: {{- include "plone.tplValue" (dict "value" .Values.tolerations "context" $) | nindent 8 }}
+      {{- end }}
+      {{- if .Values.securityContext.enabled }}
+      securityContext:
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+        fsGroup: {{ .Values.securityContext.fsGroup }}
+      {{- end }}
       containers:
+        - name: plone
+          image: {{ template "plone.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         - env:
             - name: CORS_ALLOW_METHODS
               value: GET
@@ -31,8 +60,6 @@ spec:
               value: '*'
             - name: TZ
               value: Europe/Berlin
-          image: robbuh/plonews:5.2.2-python37-0.1
-          name: plone
           ports:
             - name: http
               containerPort: 8080

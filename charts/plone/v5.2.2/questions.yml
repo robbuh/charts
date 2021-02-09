@@ -5,6 +5,24 @@ categories:
 - Blog
 - CMS
 questions:
+- variable: defaultImage
+  default: true
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "robbuh/plonews"
+    description: "Plone image name"
+    type: string
+    label: Plone Image Name
+  - variable: image.tag
+    default: "5.2.2-python37-0.1"
+    description: "Plone image tag"
+    type: string
+    label: Image Tag
 - variable: persistence.enabled
   default: false
   description: "Enable persistent volume for Plone"
