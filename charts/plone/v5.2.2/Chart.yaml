@@ -1,0 +1,8 @@
+name: v5.2.2
+description: A generated Helm Chart for v5.2.2 from Skippbox Kompose
+version: 0.0.1
+apiVersion: v1
+keywords:
+  - v5.2.2
+sources:
+home:
