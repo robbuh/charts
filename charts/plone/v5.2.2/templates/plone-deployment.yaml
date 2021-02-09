@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose --file v5.2.2.yml convert -c
+    kompose.cmd: kompose convert -c
     kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
   labels:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose --file v5.2.2.yml convert -c
+        kompose.cmd: kompose convert -c
         kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
@@ -31,12 +31,12 @@ spec:
               value: '*'
             - name: TZ
               value: Europe/Berlin
-            - name: ZEO_ADDRESS
-              value: zeoserver:8080
           image: robbuh/plonews:5.2.2-python37-0.1
           name: plone
           ports:
             - containerPort: 8080
+              name: http
+              protocol: TCP
           resources: {}
       restartPolicy: Always
 status: {}
