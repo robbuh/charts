@@ -12,6 +12,7 @@
 ## ref: https://hub.docker.com/repository/docker/robbuh/plonews/tags
 ##
 image:
+  registry: docker.io
   repository: robbuh/plonews
   tag: 5.2.2-python37-0.1
   ## Specify a imagePullPolicy
