@@ -40,6 +40,9 @@ spec:
         fsGroup: {{ .Values.securityContext.fsGroup }}
       {{- end }}
       containers:
+        - name: plone
+          image: {{ template "plone.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         - env:
             - name: CORS_ALLOW_METHODS
               value: GET
@@ -47,9 +50,6 @@ spec:
               value: '*'
             - name: TZ
               value: Europe/Berlin
-          image: {{ template "plone.image" . }}
-          name: plone
-          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           ports:
             - name: http
               containerPort: 8080
