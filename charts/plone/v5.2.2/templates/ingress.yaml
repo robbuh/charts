@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled }}
-apiVersion: apps/v1
+apiVersion: {{ template "plone.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
   name: {{ template "plone.fullname" . }}
