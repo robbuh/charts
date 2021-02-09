@@ -8,27 +8,7 @@
 #     - myRegistryKeySecretName
 #   storageClass: myStorageClass
 
-## Plone image version
-## ref: https://hub.docker.com/repository/docker/robbuh/plonews/tags
-##
-image:
-  registry: docker.io
-  repository: robbuh/plonews
-  tag: 5.2.2-python37-0.1
-  ## Specify a imagePullPolicy
-  ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
-  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
-  ##
-  pullPolicy: IfNotPresent
-  ## Optionally specify an array of imagePullSecrets.
-  ## Secrets must be manually created in the namespace.
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  ##
-  # pullSecrets:
-  #   - myRegistryKeySecretName
-  ## Set to true if you would like to see extra information on logs
-  ##
-  debug: false
+
 
 ## String to partially override plone.fullname template (will maintain the release name)
 ##
