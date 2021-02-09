@@ -1,15 +1,14 @@
-apiVersion: apps/v1
+apiVersion: {{ template "plone.deployment.apiVersion" . }}
 kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert -c
     kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
-  labels:
-    io.kompose.service: plone
-  name: plone
+  name: {{ template "plone.fullname" . }}
+  labels: {{- include "plone.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       io.kompose.service: plone
@@ -34,9 +33,10 @@ spec:
           image: robbuh/plonews:5.2.2-python37-0.1
           name: plone
           ports:
-            - containerPort: 8080
-              name: http
-              protocol: TCP
+            - name: http
+              containerPort: 8080
+            - name: https
+              containerPort: 8443
           resources: {}
       restartPolicy: Always
 status: {}
