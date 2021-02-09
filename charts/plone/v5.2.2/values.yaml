@@ -13,7 +13,7 @@
 ##
 image:
   registry: docker.io
-  repository: obbuh/plonews
+  repository: robbuh/plonews
   tag: 5.2.2-python37-0.1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
