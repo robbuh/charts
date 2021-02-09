@@ -41,7 +41,7 @@ spec:
       {{- end }}
       containers:
         - name: plone
-          image: {{ template "plone.image" . }}
+          image: robbuh/plonews:5.2.2-python37-0.1
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         - env:
             - name: CORS_ALLOW_METHODS
