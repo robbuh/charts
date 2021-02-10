@@ -1,10 +1,6 @@
 apiVersion: {{ template "plone.deployment.apiVersion" . }}
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -c
-    kompose.version: 1.22.0 (HEAD)
-  creationTimestamp: null
   name: {{ template "plone.fullname" . }}
   labels: {{- include "plone.labels" . | nindent 4 }}
 spec:
@@ -45,7 +41,7 @@ spec:
         #  imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         - env:
             - name: SITE
-              value: {{ .Values.ploneSite | quote }}
+              value: {{ template "plone.fullname" . }}
             - name: CORS_ALLOW_METHODS
               value: GET
             - name: CORS_ALLOW_ORIGIN
