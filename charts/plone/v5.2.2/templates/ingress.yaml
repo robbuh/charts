@@ -20,7 +20,7 @@ spec:
     - host: {{ .Values.ingress.hostname }}
       http:
         paths:
-          - path: {{ template "plone.fullname" . }}($|/.*)
+          - path: /{{ template "plone.fullname" . }}($|/.*)
             backend:
               serviceName: {{ template "plone.fullname" . }}
               servicePort: http
