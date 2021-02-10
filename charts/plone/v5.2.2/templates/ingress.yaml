@@ -11,10 +11,8 @@ metadata:
     {{- if .Values.ingress.annotations }}
     {{- include "plone.tplValue" (dict "value" .Values.ingress.annotations "context" $) | nindent 4 }}
     {{- end }}
-    {{- if .Values.ingress.hostname }}
-    {{- if .Values.ploneSite }}
+    {{- if and .Values.ingress.hostname .Values.ploneSite }}
     nginx.ingress.kubernetes.io/rewrite-target: /VirtualHostBase/http/{{ .Values.ingress.hostname }}:80/{{ .Values.ploneSite }}/VirtualHostRoot/$1
-    {{- end }}
     {{- end }}
 spec:
   rules:
@@ -22,7 +20,11 @@ spec:
     - host: {{ .Values.ingress.hostname }}
       http:
         paths:
+        {{- if .Values.ploneSite }}
           - path: /(.*)$
+        {{- else }}
+          - path: /
+        {{- end }}
             backend:
               serviceName: {{ template "plone.fullname" . }}
               servicePort: http

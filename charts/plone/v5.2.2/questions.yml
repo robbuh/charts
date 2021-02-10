@@ -27,7 +27,7 @@ questions:
   default: ""
   description: "Create a site with specified id"
   type: string
-  required: true
+  required: false
   label: Plone Site id
   group: "Plone Settings"
 - variable: persistence.enabled
