@@ -41,7 +41,7 @@ spec:
         #  imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         - env:
             - name: SITE
-              value: {{ template "plone.fullname" . }}
+              value: {{ .Values.ploneSite | quote }}
             - name: CORS_ALLOW_METHODS
               value: GET
             - name: CORS_ALLOW_ORIGIN
