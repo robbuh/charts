@@ -23,6 +23,13 @@ questions:
     description: "Plone image tag"
     type: string
     label: Image Tag
+- variable: ploneSite
+  default: "plone"
+  description: "Create a site with specified id"
+  type: string
+  required: true
+  label: Plone Site id
+  group: "Plone Settings"
 - variable: persistence.enabled
   default: false
   description: "Enable persistent volume for Plone"
