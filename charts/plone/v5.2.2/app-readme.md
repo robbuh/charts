@@ -1,4 +1,2 @@
 # Plone
-[Plone](https://plone.org/) is one of the most versatile open source content management systems on the market. A publishing platform for building blogs and websites.
-
-## Introduction
+[Plone](https://plone.org/) is a free and open source content management system built on top of the Zope application server.
