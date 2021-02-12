@@ -21,7 +21,7 @@ spec:
         paths:
           - path: /(.*)$
             backend:
-              serviceName: {{ template "plone.fullname" . }}-zmi
+              serviceName: {{ template "plone.fullname" . }}
               servicePort: http
     {{- end }}
     {{- range .Values.ingress.extraHosts }}
@@ -30,7 +30,7 @@ spec:
         paths:
           - path: {{ default "/" .path }}
             backend:
-              serviceName: {{ template "plone.fullname" . }}-zmi
+              serviceName: {{ template "plone.fullname" . }}
               servicePort: http
     {{- end }}
   {{- if or .Values.ingress.tls .Values.ingress.extraTls }}
