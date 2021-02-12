@@ -1,5 +1,4 @@
-{{- if .Values.ingress.enabled }}
-{{- if and .Values.ingress.hostname .Values.ploneSite }}
+{{- if and .Values.ingress.enabled  .Values.ingress.hostname .Values.ploneSite (ne .Values.ingress.hostname ".xip.io")}}
 apiVersion: {{ template "plone.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
@@ -44,5 +43,4 @@ spec:
     {{- toYaml .Values.ingress.extraTls | nindent 4 }}
     {{- end }}
   {{- end }}
-{{- end }}
 {{- end }}
