@@ -1,4 +1,4 @@
-{{- if (and (not (eq .Values.ingress.hostname ".xip.io")) .Values.ingress.hostname .Values.ploneSite) }}
+{{- if (and (ne .Values.ingress.hostname ".xip.io") .Values.ingress.hostname .Values.ploneSite) }}
 apiVersion: {{ template "plone.ingress.apiVersion" . }}
 kind: Ingress
 metadata:
