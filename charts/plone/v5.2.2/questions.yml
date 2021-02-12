@@ -25,7 +25,7 @@ questions:
     label: Image Tag
 - variable: ploneSite
   default: ""
-  description: "Create a site with specified id"
+  description: "Create a site with Id"
   type: string
   required: false
   label: Plone Site id
