@@ -44,6 +44,41 @@ questions:
   required: false
   label: Plone Add-ons Version
   group: "Plone Settings"
+- variable: ploneDevelop
+  default: ""
+  description: "Develop new or existing Plone Add-ons"
+  type: string
+  required: false
+  label: Develop Plone Add-ons
+  group: "Plone Settings"
+- variable: ploneSources
+  default: ""
+  description: "To add custom sources, the SOURCES env var needs to be a string containing a comma-separated list of sources. This is different from the other environment variables described above, which are space-separated."
+  type: string
+  required: false
+  label: Add custom sources to the buildout configuration
+  group: "Plone Settings"
+- variable: ploneFindLinks
+  default: ""
+  description: "Add custom find-links to the buildout configuration"
+  type: string
+  required: false
+  label: Add custom find-links
+  group: "Plone Settings"
+- variable: ploneProfiles
+  default: ""
+  description: "GenericSetup profiles to include when SITE environment provided"
+  type: string
+  required: false
+  label: Add a GenericSetup profiles
+  group: "Plone Settings"
+- variable: ploneZcml
+  default: ""
+  description: "Include custom Plone add-ons ZCML files"
+  type: string
+  required: false
+  label: Add custom Plone add-ons ZCML files
+  group: "Plone Settings"
 - variable: persistence.enabled
   default: false
   description: "Enable persistent volume for Plone"

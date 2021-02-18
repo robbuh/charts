@@ -46,6 +46,16 @@ spec:
               value: {{ .Values.ploneAddons | quote }}
             - name: VERSIONS
               value: {{ .Values.ploneAddonsVersion | quote }}
+            - name: DEVELOP
+              value: {{ .Values.ploneDevelop | quote }}
+            - name: SOURCES
+              value: {{ .Values.ploneSources | quote }}
+            - name: FIND_LINKS
+              value: {{ .Values.ploneFindLinks | quote }}
+            - name: PROFILES
+              value: {{ .Values.ploneProfiles | quote }}
+            - name: ZCML
+              value: {{ .Values.ploneZcml | quote }}
           ports:
             - name: http
               containerPort: 8080
