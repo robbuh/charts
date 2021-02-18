@@ -31,7 +31,7 @@ questions:
   label: Plone Site id
   group: "Plone Settings"
 - variable: ploneTZ
-  default: ""
+  default: "Europe/Berlin"
   description: "Choose Timezone"
   type: string
   required: true
