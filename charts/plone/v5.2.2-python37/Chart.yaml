@@ -1,9 +1,9 @@
+apiVersion: v1
 name: plone
+version: 5.2.2-python37
+appVersion: 0.0.1
 description: Web publishing platform for building blogs and websites.
 icon: file://../plone-stack-220x234.png
-version: 0.0.1
-appVersion: 5.2.2
-apiVersion: v1
 keywords:
 - plone
 - cms
@@ -14,3 +14,5 @@ keywords:
 - python
 sources:
 home: https://www.plone.org/
+sources:
+- https://github.com/plone/plone.docker
