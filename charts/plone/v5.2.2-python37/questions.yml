@@ -28,7 +28,7 @@ questions:
   description: "Create a site with Id"
   type: string
   required: false
-  label: Plone SITE ID
+  label: Plone SITE id
   group: "Plone Settings"
 - variable: ploneAddons
   default: ""
@@ -42,7 +42,7 @@ questions:
   description: "Use specific versions of Plone Add-on or python libraries"
   type: string
   required: false
-  label: Plone ADDONS VERSIONS
+  label: Plone Add-ons VERSIONS
   group: "Plone Settings"
 - variable: ploneDevelop
   default: ""
