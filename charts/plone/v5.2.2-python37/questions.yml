@@ -1,6 +1,6 @@
 labels:
   io.cattle.role: cluster # options are cluster/project
-  io.rancher.app_min_version: 7.3.8
+  io.rancher.app_min_version: 5.2.1
 categories:
 - Blog
 - CMS
@@ -50,20 +50,6 @@ questions:
   type: string
   required: false
   label: Plone DEVELOP Add-ons
-  group: "Plone Settings"
-- variable: ploneSources
-  default: ""
-  description: "To add custom sources, the SOURCES env var needs to be a string containing a comma-separated list of sources. This is different from the other environment variables described above, which are space-separated."
-  type: string
-  required: false
-  label: Plone custom SOURCES
-  group: "Plone Settings"
-- variable: ploneFindLinks
-  default: ""
-  description: "Add custom find-links to the buildout configuration"
-  type: string
-  required: false
-  label: Plone custom FIND-LINKS
   group: "Plone Settings"
 - variable: ploneProfiles
   default: ""

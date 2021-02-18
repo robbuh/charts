@@ -48,10 +48,6 @@ spec:
               value: {{ .Values.ploneAddonsVersion | quote }}
             - name: DEVELOP
               value: {{ .Values.ploneDevelop | quote }}
-            - name: SOURCES
-              value: {{ .Values.ploneSources | quote }}
-            - name: FIND_LINKS
-              value: {{ .Values.ploneFindLinks | quote }}
             - name: PROFILES
               value: {{ .Values.ploneProfiles | quote }}
             - name: ZCML
