@@ -39,7 +39,7 @@ spec:
         - name: plone
           image: {{ template "plone.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-        - env:
+          env:
             - name: SITE
               value: {{ .Values.ploneSite | quote }}
             - name: CORS_ALLOW_METHODS
@@ -48,9 +48,6 @@ spec:
               value: '*'
             - name: TZ
               value: Europe/Berlin
-          #name: plone
-          #image: robbuh/plonews:5.2.2-python37-0.1
-          #image: plone:5.2.2-python37
           ports:
             - name: http
               containerPort: 8080
