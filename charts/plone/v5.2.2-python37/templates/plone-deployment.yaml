@@ -42,12 +42,8 @@ spec:
           env:
             - name: SITE
               value: {{ .Values.ploneSite | quote }}
-            - name: CORS_ALLOW_METHODS
-              value: GET
-            - name: CORS_ALLOW_ORIGIN
-              value: '*'
             - name: TZ
-              value: Europe/Berlin
+              value: {{ .Values.ploneTZ | quote }}
           ports:
             - name: http
               containerPort: 8080

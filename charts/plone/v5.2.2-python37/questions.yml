@@ -30,6 +30,13 @@ questions:
   required: false
   label: Plone Site id
   group: "Plone Settings"
+- variable: ploneTZ
+  default: ""
+  description: "Choose Timezone"
+  type: string
+  required: true
+  label: Plone Site Timezone
+  group: "Plone Settings"
 - variable: persistence.enabled
   default: false
   description: "Enable persistent volume for Plone"
