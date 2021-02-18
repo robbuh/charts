@@ -30,12 +30,19 @@ questions:
   required: false
   label: Plone Site id
   group: "Plone Settings"
-- variable: ploneTZ
-  default: "Europe/Berlin"
-  description: "Choose Timezone"
+- variable: ploneAddons
+  default: ""
+  description: "Customize Plone via Plone Add-ons using this environment variable"
   type: string
-  required: true
-  label: Plone Site Timezone
+  required: false
+  label: Plone Add-ons
+  group: "Plone Settings"
+- variable: ploneAddonsVersion
+  default: ""
+  description: "Use specific versions of Plone Add-on or python libraries"
+  type: string
+  required: false
+  label: Plone Add-ons Version
   group: "Plone Settings"
 - variable: persistence.enabled
   default: false

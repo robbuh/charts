@@ -42,8 +42,10 @@ spec:
           env:
             - name: SITE
               value: {{ .Values.ploneSite | quote }}
-            - name: TZ
-              value: {{ .Values.ploneTZ | quote }}
+            - name: ADDONS
+              value: {{ .Values.ploneAddons | quote }}
+            - name: VERSIONS
+              value: {{ .Values.ploneAddonsVersion | quote }}
           ports:
             - name: http
               containerPort: 8080
