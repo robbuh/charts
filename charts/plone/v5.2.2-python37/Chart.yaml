@@ -16,3 +16,7 @@ sources:
 home: https://www.plone.org/
 sources:
 - https://github.com/plone/plone.docker
+maintainers:
+- name: Plone Foundation
+  email:
+engine: gotpl

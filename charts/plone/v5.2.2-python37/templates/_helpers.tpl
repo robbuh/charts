@@ -49,7 +49,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Return the proper WordPress image name
+Return the proper Plone image name
 */}}
 {{- define "plone.image" -}}
 {{- $registryName := .Values.image.registry -}}
@@ -137,7 +137,7 @@ imagePullSecrets:
 {{- end -}}
 
 {{/*
-Return  the proper Storage Class
+Return the proper Storage Class
 */}}
 {{- define "plone.storageClass" -}}
 {{/*
@@ -210,7 +210,7 @@ Usage:
 Check if there are rolling tags in the images
 */}}
 {{- define "plone.checkRollingTags" -}}
-{{- if and (contains "bitnami/" .Values.image.repository) (not (.Values.image.tag | toString | regexFind "-r\\d+$|sha256:")) }}
+{{- if and (contains "plone/" .Values.image.repository) (not (.Values.image.tag | toString | regexFind "-r\\d+$|sha256:")) }}
 WARNING: Rolling tag detected ({{ .Values.image.repository }}:{{ .Values.image.tag }}), please note that it is strongly recommended to avoid using rolling tags in a production environment.
 +info https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/
 {{- end }}
