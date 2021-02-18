@@ -1,7 +1,7 @@
 apiVersion: v1
 name: plone
-version: 0.0.1
-appVersion: 5.2.2
+version: 5.2.2-python37-1.0
+appVersion: 5.2.2-python37
 description: Web publishing platform for building blogs and websites.
 icon: file://../plone-stack-220x234.png
 keywords:
