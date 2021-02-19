@@ -55,6 +55,40 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          {{- if .Values.livenessProbe.enabled }}
+          livenessProbe:
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+            httpGet:
+              path: /
+              port: {{ ternary "https" "http" .Values.healthcheckHttps }}
+              {{- if .Values.healthcheckHttps }}
+              scheme: HTTPS
+              {{- end }}
+              {{- if .Values.livenessProbeHeaders }}
+              httpHeaders: {{- toYaml .Values.livenessProbeHeaders | nindent 16 }}
+              {{- end }}
+          {{- end }}
+          {{- if .Values.readinessProbe.enabled }}
+          readinessProbe:
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+            httpGet:
+              path: /
+              port: {{ ternary "https" "http" .Values.healthcheckHttps }}
+              {{- if .Values.healthcheckHttps }}
+              scheme: HTTPS
+              {{- end }}
+              {{- if .Values.readinessProbeHeaders }}
+              httpHeaders: {{- toYaml .Values.readinessProbeHeaders | nindent 16 }}
+              {{- end }}
+          {{- end }}
           resources: {}
       restartPolicy: Always
 status: {}

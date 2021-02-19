@@ -54,40 +54,18 @@ image:
 updateStrategy:
   type: RollingUpdate
 
-## Set to `false` to allow the container to be started with blank passwords
-## ref: https://github.com/bitnami/bitnami-docker-wordpress#environment-variables
-##
-allowEmptyPassword: true
-
-## Set Apache allowOverride to None
-## ref: https://github.com/bitnami/bitnami-docker-wordpress#environment-variables
-##
-allowOverrideNone: false
-
-# ConfigMap with custom plone-htaccess.conf file (requires allowOverrideNone to true)
-customHTAccessCM:
 
 ## Use an alternate scheduler, e.g. "stork".
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 ##
 # schedulerName:
 
-## SMTP mail delivery configuration
-## ref: https://github.com/bitnami/bitnami-docker-wordpress/#smtp-configuration
-##
-# smtpHost:
-# smtpPort:
-# smtpUser:
-# smtpPassword:
-# smtpUsername:
-# smtpProtocol:
-
 replicaCount: 1
 
 ## Additional container environment variables
 ## Example: Configure SSL for database
 ## extraEnv:
-##   - name: WORDPRESS_DATABASE_SSL_CA_FILE
+##   - name: PLONE_EXT_DATABASE_SSL_CA_FILE
 ##     value: /path/to/ca_cert
 ##
 extraEnv: []
@@ -111,7 +89,7 @@ extraVolumeMounts: []
 ##          path: ca_cert
 extraVolumes: []
 
-## WordPress containers' resource requests and limits
+## Plone containers' resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources:
@@ -140,7 +118,7 @@ tolerations: {}
 ##
 podAnnotations: {}
 
-## K8s Security Context for WordPress pods
+## K8s Security Context for Plone pods
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ##
 securityContext:
@@ -151,7 +129,7 @@ securityContext:
 ## Allow health checks to be pointed at the https port
 healthcheckHttps: false
 
-## WordPress pod extra options for liveness and readiness probes
+## Plone pod extra options for liveness and readiness probes
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
 livenessProbe:
   enabled: true
@@ -222,7 +200,7 @@ service:
   # extraPorts:
 
 ## Configure the ingress resource that allows you to access the
-## WordPress installation. Set up the URL
+## Plone installation. Set up the URL
 ## ref: http://kubernetes.io/docs/user-guide/ingress/
 ##
 ingress:

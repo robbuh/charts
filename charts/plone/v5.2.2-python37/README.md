@@ -58,3 +58,16 @@ If you are going to use Helm to manage the certificates, please copy these value
 If you are going to manage TLS secrets outside of Helm, please know that you can create a TLS secret (named `plone.local-tls` for example).
 
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
+
+### Ingress-terminated https
+
+In cases where HTTPS/TLS is terminated on the ingress, you may run into an issue where non-https liveness and readiness probes result in a 302 (redirect from HTTP to HTTPS) and are interpreted by Kubernetes as not-live/not-ready.  (See [Kubernetes issue #47893 on GitHub](https://github.com/kubernetes/kubernetes/issues/47893) for further details about 302 _not_ being interpreted as "successful".)  To work around this problem, use `livenessProbeHeaders` and `readinessProbeHeaders` to pass the same headers that your ingress would pass in order to get an HTTP 200 status result.  For example (where the following is in a `--values`-referenced file):
+
+```yaml
+livenessProbeHeaders:
+  - name: X-Forwarded-Proto
+    value: https
+readinessProbeHeaders:
+  - name: X-Forwarded-Proto
+    value: https
+```
