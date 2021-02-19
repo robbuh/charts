@@ -89,6 +89,24 @@ spec:
               httpHeaders: {{- toYaml .Values.readinessProbeHeaders | nindent 16 }}
               {{- end }}
           {{- end }}
+          volumeMounts:
+            - mountPath: /data/
+              name: plone-data
+              #subPath: plone
+            {{- if .Values.extraVolumeMounts }}
+            {{- include "plone.tplValue" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
+            {{- end }}
           resources: {}
+      volumes:
+        - name: plone-data
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "plone.fullname" .) }}
+          {{- else }}
+          emptyDir: {}
+          {{ end }}
+        {{- if .Values.extraVolumes }}
+        {{- include "plone.tplValue" (dict "value" .Values.extraVolumes "context" $) | nindent 8 }}
+        {{- end }}
       restartPolicy: Always
 status: {}
