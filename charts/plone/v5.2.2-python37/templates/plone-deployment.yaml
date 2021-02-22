@@ -52,6 +52,18 @@ spec:
               value: {{ .Values.ploneProfiles | quote }}
             - name: ZCML
               value: {{ .Values.ploneZCML | quote }}
+            - name: CORS_ALLOW_ORIGIN
+              value: {{ .Values.ploneCorsAllowOrigin | quote }}
+            - name: CORS_ALLOW_METHODS
+              value: {{ .Values.ploneCorsAllowMethods | quote }}
+            - name: CORS_ALLOW_CREDENTIALS
+              value: {{ .Values.ploneCorsAllowCredentials | quote }}
+            - name: CORS_EXPOSE_HEADERS
+              value: {{ .Values.ploneCorsExposeHeaders | quote }}
+            - name: CORS_ALLOW_HEADERS
+              value: {{ .Values.ploneCorsAllowHeaders | quote }}
+            - name: CORS_MAX_AGE
+              value: {{ .Values.ploneCorsMaxAge | quote }}
           ports:
             - name: http
               containerPort: 8080
