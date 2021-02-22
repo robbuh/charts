@@ -70,42 +70,42 @@ questions:
   description: "Origins that are allowed access to the resource. Either a comma separated list of origins, e.g. http://example.net,http://mydomain.com or *. Defaults to http://localhost:3000,http://127.0.0.1:3000"
   type: string
   required: false
-  label: Plone CORS_ALLOW_ORIGIN settings
+  label: Plone CORS Policy ALLOW_ORIGIN settings
   group: "CORS Settings"
 - variable: ploneCorsAllowMethods
   default: ""
   description: "A comma separated list of HTTP method names that are allowed by this CORS policy, e.g. DELETE,GET,OPTIONS,PATCH,POST,PUT. Defaults to DELETE,GET,OPTIONS,PATCH,POST,PUT"
   type: string
   required: false
-  label: Plone CORS_ALLOW_METHODS settings
+  label: Plone CORS Policy ALLOW_METHODS settings
   group: "CORS Settings"
 - variable: ploneCorsAllowCredentials
   default: ""
   description: "Indicates whether the resource supports user credentials in the request. Defaults to true"
   type: string
   required: false
-  label: Plone CORS_ALLOW_CREDENTIALS settings
+  label: Plone CORS Policy ALLOW_CREDENTIALS settings
   group: "CORS Settings"
 - variable: ploneCorsExposeHeaders
   default: ""
   description: "A comma separated list of response headers clients can access, e.g. Content-Length,X-My-Header. Defaults to Content-Length,X-My-Header"
   type: string
   required: false
-  label: Plone CORS_EXPOSE_HEADERS settings
+  label: Plone CORS Policy EXPOSE_HEADERS settings
   group: "CORS Settings"
 - variable: ploneCorsAllowHeaders
   default: ""
   description: "A comma separated list of request headers allowed to be sent by the client, e.g. X-My-Header. Defaults to Accept,Authorization,Content-Type,X-Custom-Header"
   type: string
   required: false
-  label: Plone CORS_ALLOW_HEADERS settings
+  label: Plone CORS Policy ALLOW_HEADERS settings
   group: "CORS Settings"
 - variable: ploneCorsMaxAge
   default: ""
   description: "Indicates how long the results of a preflight request can be cached. Defaults to 3600"
   type: string
   required: false
-  label: Plone CORS_MAX_AGE settings
+  label: Plone CORS Policy MAX_AGE settings
   group: "CORS Settings"
 - variable: persistence.enabled
   default: false
